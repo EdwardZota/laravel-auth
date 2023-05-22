@@ -19,11 +19,13 @@
                         <td>{{$project->title}}</td>
                         <td>{{$project->preview_image}}</td>
                         <td class="d-flex">
-                            <div class="me-2">
+                            <div class="my-2">
                                 <a href="{{route('admin.projects.show',['project'=>$project->id])}}" class="btn btn-primary ">Info</a>
-
                             </div>
-                            <form action="{{route('admin.projects.destroy',['project'=>$project->id])}}" method="POST">
+                            <div class="mx-2 my-2">
+                                <a href="{{route('admin.projects.edit',['project'=>$project->id])}}" class="btn btn-warning ">Modifica</a>
+                            </div>
+                            <form  class="my-2" action="{{route('admin.projects.destroy',['project'=>$project->id])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">Elimina</button>
