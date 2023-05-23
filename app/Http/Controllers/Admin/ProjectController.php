@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -42,11 +43,13 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
+        $data['post_slug'] = Str::slug($request->title,'-');
+
         $newProject = new Project();
 
-        $newProject->fill($data);
-
-        $newProject->save();
+        $newProject->fill($data);//
+                                 //--> $newProject = Project::create($data);
+        $newProject->save();     //
 
         return redirect()->route('admin.projects.show',['project'=>$newProject->id]);
 
@@ -85,6 +88,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $request = $request->validated();
+        $data['post_slug'] = Str::slug($request->title,'-');
         $project->update();
 
         return redirect()->route('admin.projects.show',['project'=>$project->id]);

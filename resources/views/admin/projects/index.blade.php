@@ -20,7 +20,7 @@
                         <td>{{$project->preview_image}}</td>
                         <td class="d-flex">
                             <div class="my-2">
-                                <a href="{{route('admin.projects.show',['project'=>$project->id])}}" class="btn btn-primary ">Info</a>
+                                <a href="{{route('admin.projects.show',$project->post_slug)}}" class="btn btn-primary ">Info</a>
                             </div>
                             <div class="mx-2 my-2">
                                 <a href="{{route('admin.projects.edit',['project'=>$project->id])}}" class="btn btn-warning ">Modifica</a>
