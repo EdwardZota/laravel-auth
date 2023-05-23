@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.sidebar')
 <div class="container">
     <div class="row my-5">
-        <table class="table table-hover table-striped table-bordered table-dark">
+        <table class="table table-hover table-striped table-bordered">
             <thead>
             <tr>
                 <th scope="col">Progetto</th>
@@ -23,9 +24,9 @@
                                 <a href="{{route('admin.projects.show',$project->post_slug)}}" class="btn btn-primary ">Info</a>
                             </div>
                             <div class="mx-2 my-2">
-                                <a href="{{route('admin.projects.edit',['project'=>$project->id])}}" class="btn btn-warning ">Modifica</a>
+                                <a href="{{route('admin.projects.edit',['project'=>$project->post_slug])}}" class="btn btn-warning ">Modifica</a>
                             </div>
-                            <form  class="my-2" action="{{route('admin.projects.destroy',['project'=>$project->id])}}" method="POST">
+                            <form  class="my-2" action="{{route('admin.projects.destroy',['project'=>$project->post_slug])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">Elimina</button>

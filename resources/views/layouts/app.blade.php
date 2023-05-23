@@ -25,7 +25,7 @@
         @include('partials.header')
 
 
-        <main class="">
+        <main class="d-flex min-vh-100">
             @yield('content')
         </main>
     </div>
